@@ -1,4 +1,8 @@
 # Backup files
 *.backup.*
 *.bak
+*.bak.*
 *~
+
+# Per-machine monitor/display layout (not portable)
+niri/dms/outputs.kdl
