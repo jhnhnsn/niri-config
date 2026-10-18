@@ -70,12 +70,14 @@ input {
         // middle-emulation
     }
 
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
-
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
     focus-follows-mouse
+
+    // Uncomment this to make the mouse warp to the center of newly focused windows.
+    //UNCOMMENTED BY JH 6/17/2026
+    //Changed BY JH 6/23/2026
+    warp-mouse-to-focus mode="center-xy-always"
 }
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
@@ -259,6 +261,7 @@ window-rule {
 }
 debug {
     honor-xdg-activation-with-invalid-serial
+    // Per-machine GPU selection (render-drm-device etc.) lives in local.kdl.
 }
 
 // Override to disable super+tab
@@ -271,6 +274,17 @@ recent-windows {
     }
 }
 
+// Lid close: turn off the internal panel only (no suspend/hibernate). Targeting
+// eDP-1 (not power-off-monitors) keeps any external/dock monitor running in
+// clamshell, and `output off` won't wake on stray input while the lid is shut.
+// niri's switch-events only accept `spawn`, so call back into niri's own IPC.
+// logind is set to HandleLidSwitch=ignore (/etc/systemd/logind.conf.d/) so it
+// does not act. Hibernate is explicit only: `systemctl hibernate` or DMS menu.
+switch-events {
+    lid-close { spawn "niri" "msg" "output" "eDP-1" "off"; }
+    lid-open  { spawn "niri" "msg" "output" "eDP-1" "on"; }
+}
+
 // Include dms files
 include "dms/colors.kdl"
 include "dms/layout.kdl"
@@ -278,3 +292,7 @@ include "dms/alttab.kdl"
 include "dms/binds.kdl"
 include "dms/outputs.kdl"
 include "dms/cursor.kdl"
+
+// Per-machine settings (not tracked in niri-config; restore.sh creates it empty).
+// Last, so it can override anything above.
+include "local.kdl"

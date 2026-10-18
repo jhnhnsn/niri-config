@@ -5,8 +5,8 @@
 #   cd ~/niri-config && ./restore.sh
 #
 # Safe to re-run: it backs up anything it overwrites to <path>.bak.<timestamp>.
-# It does NOT touch per-machine monitor layout (dms/outputs.kdl) if you already
-# have one — that file is intentionally not tracked in this repo.
+# It does NOT touch per-machine files (dms/outputs.kdl, local.kdl) if you already
+# have them — they are intentionally not tracked in this repo.
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -34,6 +34,15 @@ if [ ! -f "$NIRI_DST/dms/outputs.kdl" ]; then
   echo "  created empty $NIRI_DST/dms/outputs.kdl (niri auto-detects; customize per machine)"
 else
   echo "  kept existing $NIRI_DST/dms/outputs.kdl (per-machine; not overwritten)"
+fi
+
+# Per-machine: config.kdl includes local.kdl last, for machine-specific settings
+# (e.g. render-drm-device on a hybrid-GPU laptop). Same rule as outputs.kdl.
+if [ ! -f "$NIRI_DST/local.kdl" ]; then
+  : > "$NIRI_DST/local.kdl"
+  echo "  created empty $NIRI_DST/local.kdl (per-machine overrides)"
+else
+  echo "  kept existing $NIRI_DST/local.kdl (per-machine; not overwritten)"
 fi
 
 echo "==> Restoring DMS settings to $DMS_DST"

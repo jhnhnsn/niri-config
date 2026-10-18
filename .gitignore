@@ -6,3 +6,6 @@
 
 # Per-machine monitor/display layout (not portable)
 niri/dms/outputs.kdl
+
+# Per-machine overrides (GPU selection etc.), included last from config.kdl
+niri/local.kdl
