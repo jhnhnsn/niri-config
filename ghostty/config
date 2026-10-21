@@ -1,0 +1,90 @@
+# Font Configuration
+font-size = 12
+
+# Window Configuration
+window-decoration = false
+window-padding-x = 12
+window-padding-y = 12
+background-opacity = 1.0
+background-blur-radius = 32
+
+# Cursor Configuration
+cursor-style = block
+cursor-style-blink = true
+
+# Scrollback
+scrollback-limit = 3023
+
+# Terminal features
+mouse-hide-while-typing = true
+copy-on-select = false
+confirm-close-surface = false
+
+# Disable annoying copied to clipboard
+app-notifications = no-clipboard-copy,no-config-reload
+
+# Key bindings for common actions
+#keybind = ctrl+c=copy_to_clipboard
+#keybind = ctrl+v=paste_from_clipboard
+keybind = ctrl+shift+n=new_window
+keybind = ctrl+t=new_tab
+keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+zero=reset_font_size
+
+# Material 3 UI elements
+unfocused-split-opacity = 0.7
+unfocused-split-fill = #44464f
+
+# Tab configuration
+gtk-titlebar = false
+
+# Shell integration
+shell-integration = detect
+shell-integration-features = cursor,sudo,title,no-cursor
+keybind = shift+enter=text:\n
+
+# Rando stuff
+gtk-single-instance = true
+
+# Dank color generation
+theme = dankcolors
+
+# free alt+1..9 for herdr tab switching
+keybind = alt+digit_1=unbind
+keybind = alt+1=unbind
+keybind = alt+digit_2=unbind
+keybind = alt+2=unbind
+keybind = alt+digit_3=unbind
+keybind = alt+3=unbind
+keybind = alt+digit_4=unbind
+keybind = alt+4=unbind
+keybind = alt+digit_5=unbind
+keybind = alt+5=unbind
+keybind = alt+digit_6=unbind
+keybind = alt+6=unbind
+keybind = alt+digit_7=unbind
+keybind = alt+7=unbind
+keybind = alt+digit_8=unbind
+keybind = alt+8=unbind
+keybind = alt+digit_9=unbind
+keybind = alt+9=unbind
+# ghostty tabs on ctrl+alt+1..9
+keybind = ctrl+alt+digit_1=goto_tab:1
+keybind = ctrl+alt+1=goto_tab:1
+keybind = ctrl+alt+digit_2=goto_tab:2
+keybind = ctrl+alt+2=goto_tab:2
+keybind = ctrl+alt+digit_3=goto_tab:3
+keybind = ctrl+alt+3=goto_tab:3
+keybind = ctrl+alt+digit_4=goto_tab:4
+keybind = ctrl+alt+4=goto_tab:4
+keybind = ctrl+alt+digit_5=goto_tab:5
+keybind = ctrl+alt+5=goto_tab:5
+keybind = ctrl+alt+digit_6=goto_tab:6
+keybind = ctrl+alt+6=goto_tab:6
+keybind = ctrl+alt+digit_7=goto_tab:7
+keybind = ctrl+alt+7=goto_tab:7
+keybind = ctrl+alt+digit_8=goto_tab:8
+keybind = ctrl+alt+8=goto_tab:8
+keybind = ctrl+alt+digit_9=goto_tab:9
+keybind = ctrl+alt+9=goto_tab:9

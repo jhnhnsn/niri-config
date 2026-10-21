@@ -50,6 +50,16 @@ mkdir -p "$DMS_DST"
 backup "$DMS_DST/settings.json"
 cp "$REPO_DIR/dankshell/settings.json" "$DMS_DST/settings.json"
 
+echo "==> Restoring Ghostty config to $HOME/.config/ghostty"
+mkdir -p "$HOME/.config/ghostty"
+backup "$HOME/.config/ghostty/config"
+cp "$REPO_DIR/ghostty/config" "$HOME/.config/ghostty/config"
+
+echo "==> Restoring herdr config to $HOME/.config/herdr"
+mkdir -p "$HOME/.config/herdr"
+backup "$HOME/.config/herdr/config.toml"
+cp "$REPO_DIR/herdr/config.toml" "$HOME/.config/herdr/config.toml"
+
 echo "==> Validating niri config"
 if command -v niri >/dev/null 2>&1; then
   niri validate -c "$NIRI_DST/config.kdl" 2>&1 | grep -iE 'valid|error' || true

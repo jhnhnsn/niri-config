@@ -1,0 +1,14 @@
+onboarding = false
+
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+status_indicators = "symbols"
+
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[keys]
+switch_tab = "alt+1..9"
