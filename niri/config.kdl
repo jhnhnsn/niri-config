@@ -72,7 +72,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="0%"
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
     //UNCOMMENTED BY JH 6/17/2026
